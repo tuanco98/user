@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  prl-user-be:
+    image: prl-user-be:2.10.3
+    logging:
+        driver: "json-file"
+        options:
+            max-size: "10m"
+            max-file: "5"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "$PORT:$PORT"
+    env_file: .env
+    restart: always
